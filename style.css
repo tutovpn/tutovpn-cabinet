@@ -566,3 +566,133 @@ h1, h2, h3, h4 {
     font-size: 12.5px;
     color: var(--muted);
 }
+
+/* ============================================================
+   СТРАНИЦЫ (переключение через меню)
+   ============================================================ */
+.page[hidden] {
+    display: none;
+}
+
+/* ============================================================
+   ТАРИФЫ
+   ============================================================ */
+.tariffs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+@media (max-width: 800px) {
+    .tariffs {
+        grid-template-columns: 1fr;
+    }
+}
+
+.tariff {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* выделенный тариф */
+.tariff--best {
+    border-color: rgba(34, 196, 255, 0.5);
+    box-shadow: 0 0 30px -8px rgba(34, 196, 255, 0.4);
+}
+
+.tariff__badge {
+    position: absolute;
+    top: -11px;
+    left: 22px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #02121c;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--aqua), #0d8fd6);
+}
+
+.tariff__name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--muted);
+}
+
+.tariff__price {
+    margin: 10px 0 4px;
+    font-size: 34px;
+    font-weight: 800;
+}
+
+.tariff__price span {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+.tariff__note {
+    margin-bottom: 20px;
+    font-size: 13px;
+    color: var(--aqua-soft);
+}
+
+.tariff .btn {
+    margin-top: auto;
+}
+
+/* ============================================================
+   ШАГИ (подключение, рефералы)
+   ============================================================ */
+.steps {
+    display: grid;
+    gap: 14px;
+}
+
+.step {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+}
+
+.step__num {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    font-weight: 800;
+    color: #02121c;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--aqua), #0d8fd6);
+}
+
+.step__body {
+    padding-top: 2px;
+}
+
+.step__title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.step__desc {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.55;
+}
