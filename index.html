@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TutoVPN — Личный кабинет</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="bubbles" id="bubbles"></div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#22c4ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z"/>
+          <path d="M9 12l2 2 4-4"/>
+        </svg>
+      </div>
+      <div>
+        <b>TutoVPN</b>
+        <span>личный кабинет</span>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="chip"><span class="dot"></span> Подписка активна</span>
+    </div>
+  </header>
+
+  <div class="demo-note">⚙️ Демо-страница. Данные ниже — примерные, для показа дизайна. Реальные подтянем позже.</div>
+
+  <div class="head">
+    <div class="eyebrow">Мой доступ</div>
+    <h1>Привет, это твой кабинет</h1>
+    <p>Здесь ты управляешь подпиской, устройствами и ключом.</p>
+  </div>
+
+  <div class="grid">
+    <!-- левая колонка -->
+    <div class="card">
+      <h2>Статус подписки</h2>
+      <div class="sub">Информация о текущем плане</div>
+
+      <div class="plan">
+        <div class="label">Текущий тариф</div>
+        <div class="name" id="planName">1 месяц</div>
+        <div class="price" id="planPrice">99 ₽ на 30 дней</div>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><div class="k">Действует до</div><div class="v" id="expiry">30 июля 2026</div></div>
+        <div class="fact"><div class="k">Лимит устройств</div><div class="v" id="devices">3 / 3</div></div>
+      </div>
+
+      <div class="renew">
+        <div><div class="muted">Следующее продление</div><span id="renew">99 ₽ · 30.07.2026</span></div>
+        <a href="#">Изменить</a>
+      </div>
+
+      <!-- НОВАЯ раскладка кнопок -->
+      <div class="actions">
+        <a class="btn hero" href="#">🔗 Подключить VPN</a>
+
+        <div class="row2">
+          <a class="btn key" href="#">🔄 Продлить</a>
+          <a class="btn key" href="#">🔑 Новый ключ</a>
+        </div>
+
+        <div class="minor">
+          <a class="btn ghost" href="#"><span class="ic">📱</span> Докупить устройства <span class="arrow">›</span></a>
+          <a class="btn ghost" href="#"><span class="ic">🧹</span> Сбросить подключения <span class="arrow">›</span></a>
+          <a class="btn ghost" href="#"><span class="ic">🎁</span> Пригласить друга <span class="arrow">›</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- правая колонка -->
+    <div class="card">
+      <h2>Аккаунт</h2>
+      <div class="sub">Данные профиля</div>
+
+      <div class="field">
+        <div class="k">ID пользователя</div>
+        <div class="row"><span class="v" id="userId">tg1192017181</span><a href="#" id="copyBtn">Копировать</a></div>
+      </div>
+      <div class="field">
+        <div class="k">Telegram</div>
+        <div class="row"><span class="v">Привязан ✓</span></div>
+      </div>
+
+      <div class="traffic">
+        <h2>Трафик</h2>
+        <div class="sub">Использование по подписке</div>
+        <div class="big" id="trafficBig">Безлимит</div>
+        <div class="bar"><i id="trafficBar" style="width:4%"></i></div>
+        <div class="meta"><span id="trafficUsed">Использовано 8 ГБ</span><span>без ограничений</span></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    TutoVPN · быстрый VPN в Telegram<br>
+    <a href="https://t.me/Tuto_VPN_bot">@Tuto_VPN_bot</a> · Канал · Поддержка
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
