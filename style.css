@@ -1,0 +1,568 @@
+/* ============================================================
+   TutoVPN — стили личного кабинета
+   Структура: БЭМ (блок__элемент--модификатор)
+   ============================================================ */
+
+/* --- Переменные (цвета берём из логотипа: циан-неон) --- */
+:root {
+    --deep: #080611;              /* фон, самый тёмный */
+    --panel: rgba(20, 22, 48, 0.6); /* фон карточек */
+    --line: rgba(90, 200, 255, 0.16); /* границы */
+    --aqua: #22c4ff;              /* основной акцент (циан) */
+    --aqua-soft: #8fe4ff;         /* светлый циан */
+    --blue: #3d7bff;              /* второй акцент (синий) */
+    --text: #e6f1f8;              /* основной текст */
+    --muted: #7f93ad;             /* приглушённый текст */
+    --good: #4df0d0;              /* «всё хорошо» (зелёный) */
+    --font: 'Manrope', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+}
+
+/* --- Базовые сбросы --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font);
+    color: var(--text);
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background:
+        radial-gradient(1200px 700px at 78% -8%, #10294a 0%, transparent 60%),
+        radial-gradient(900px 600px at 8% 108%, #141a3a 0%, transparent 55%),
+        linear-gradient(180deg, #080611 0%, #0c1226 100%);
+    background-attachment: fixed;
+}
+
+a {
+    color: var(--aqua);
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+h1, h2, h3, h4 {
+    font-weight: 800;
+}
+
+/* --- Контейнер (центровка контента) --- */
+.container {
+    box-sizing: border-box;
+    max-width: 1080px;
+    margin: 0 auto;      /* центрируем */
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* --- Пузырьки (ambient-фон) --- */
+.bubbles {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubbles span {
+    position: absolute;
+    bottom: -40px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(143, 228, 255, 0.55), rgba(34, 196, 255, 0.05));
+    animation: rise linear infinite;
+    opacity: 0;
+}
+
+@keyframes rise {
+    0%   { transform: translateY(0) translateX(0); opacity: 0; }
+    10%  { opacity: 0.5; }
+    90%  { opacity: 0.25; }
+    100% { transform: translateY(-108vh) translateX(30px); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .bubbles span { display: none; }
+}
+
+/* ============================================================
+   ШАПКА
+   ============================================================ */
+.header {
+    padding: 28px 0;
+}
+
+.header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.header__brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header__logo {
+    width: 42px;
+    height: 42px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, #0e2440, #123a5a);
+    box-shadow: 0 0 24px rgba(34, 196, 255, 0.35);
+}
+
+.header__logo svg {
+    width: 22px;
+    height: 22px;
+}
+
+.header__name {
+    display: block;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.3px;
+}
+
+.header__sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.header__list {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.header__link {
+    display: inline-block;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted);
+    border-radius: 10px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.header__link:hover {
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.header__link--active {
+    color: var(--aqua);
+    background: rgba(34, 196, 255, 0.1);
+}
+
+.header__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 13px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--aqua-soft);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(34, 196, 255, 0.06);
+}
+
+.header__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--good);
+    box-shadow: 0 0 8px var(--good);
+}
+
+/* на узких экранах меню переносим вниз */
+@media (max-width: 800px) {
+    .header__nav {
+        order: 3;
+        width: 100%;
+    }
+    .header__list {
+        justify-content: center;
+    }
+}
+
+/* ============================================================
+   КАБИНЕТ (основной контент)
+   ============================================================ */
+.cabinet {
+    padding-bottom: 60px;
+}
+
+.cabinet__demo {
+    max-width: 640px;
+    margin: 0 auto 26px;
+    padding: 9px 14px;
+    font-size: 12.5px;
+    text-align: center;
+    color: var(--aqua-soft);
+    border: 1px dashed rgba(34, 196, 255, 0.4);
+    border-radius: 10px;
+    background: rgba(34, 196, 255, 0.06);
+}
+
+.cabinet__head {
+    margin-bottom: 26px;
+}
+
+.cabinet__eyebrow {
+    margin-bottom: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--aqua);
+}
+
+.cabinet__title {
+    font-size: clamp(28px, 5vw, 40px);
+    letter-spacing: -1px;
+}
+
+.cabinet__desc {
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--muted);
+}
+
+.cabinet__grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 18px;
+    align-items: start;
+}
+
+@media (max-width: 800px) {
+    .cabinet__grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   КАРТОЧКА (переиспользуемый блок)
+   ============================================================ */
+.card {
+    padding: 22px;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: var(--panel);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 20px 50px -30px rgba(0, 0, 0, 0.9);
+}
+
+.card__title {
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.card__subtitle {
+    margin-bottom: 18px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+/* ============================================================
+   БЛОК «ТАРИФ»
+   ============================================================ */
+.plan {
+    margin-bottom: 16px;
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(160deg, rgba(34, 196, 255, 0.08), rgba(34, 196, 255, 0));
+}
+
+.plan__label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--aqua);
+}
+
+.plan__name {
+    margin: 8px 0 2px;
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.plan__price {
+    font-size: 14px;
+    color: var(--muted);
+}
+
+/* ============================================================
+   ФАКТЫ (срок + устройства)
+   ============================================================ */
+.facts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.facts__key {
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.facts__value {
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* ============================================================
+   ПРОДЛЕНИЕ
+   ============================================================ */
+.renew {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 13px 15px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.renew__label {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.renew__link {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ============================================================
+   КНОПКИ
+   ============================================================ */
+.actions {
+    margin-top: 2px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text);
+    cursor: pointer;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.03);
+    transition: transform 0.12s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 196, 255, 0.45);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--aqua);
+    outline-offset: 2px;
+}
+
+/* иконки внутри кнопок: только контур, без заливки */
+.btn svg {
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.btn__icon {
+    width: 18px;
+    height: 18px;
+    flex: none;
+    stroke: currentColor;
+}
+
+/* главная кнопка — крупная, со свечением */
+.btn--hero {
+    margin-bottom: 12px;
+    padding: 17px 18px;
+    font-size: 16px;
+    color: #02121c;
+    border-color: transparent;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--aqua), #0d8fd6);
+    box-shadow: 0 10px 30px -8px rgba(34, 196, 255, 0.65);
+}
+
+.btn--hero:hover {
+    box-shadow: 0 14px 36px -8px rgba(34, 196, 255, 0.8);
+}
+
+/* два ключевых действия в ряд */
+.actions__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.btn--key {
+    color: var(--aqua-soft);
+    background: rgba(34, 196, 255, 0.08);
+    border-color: rgba(34, 196, 255, 0.28);
+}
+
+/* второстепенные кнопки — список */
+.actions__minor {
+    display: grid;
+    gap: 9px;
+}
+
+.btn--ghost {
+    justify-content: flex-start;
+    padding: 11px 13px;
+    font-size: 13.5px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.btn__badge {
+    width: 30px;
+    height: 30px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: rgba(34, 196, 255, 0.1);
+}
+
+.btn__badge svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--aqua);
+}
+
+.btn__arrow {
+    margin-left: auto;
+    font-size: 18px;
+    color: var(--muted);
+}
+
+/* ============================================================
+   ПОЛЕ (данные аккаунта)
+   ============================================================ */
+.field {
+    margin-bottom: 11px;
+    padding: 13px 15px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+}
+
+.field__key {
+    margin-bottom: 6px;
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+}
+
+.field__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.field__value {
+    font-size: 15px;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.field__action {
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+/* ============================================================
+   ТРАФИК
+   ============================================================ */
+.traffic {
+    margin-top: 18px;
+}
+
+.traffic__big {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.traffic__bar {
+    height: 9px;
+    margin: 9px 0 7px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.07);
+    overflow: hidden;
+}
+
+.traffic__fill {
+    display: block;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--aqua), var(--blue));
+    box-shadow: 0 0 12px rgba(34, 196, 255, 0.6);
+}
+
+.traffic__meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+/* ============================================================
+   ПОДВАЛ
+   ============================================================ */
+.footer {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer__brand {
+    font-size: 12.5px;
+    color: var(--muted);
+}
+
+.footer__links {
+    margin-top: 6px;
+    font-size: 12.5px;
+    color: var(--muted);
+}
