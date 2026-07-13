@@ -95,3 +95,24 @@ var DEMO = {
 };
 
 renderProfile(DEMO);
+
+// --- 5. Переключение устройства на странице "Подключение" ---
+(function () {
+    var tiles = document.querySelectorAll('[data-device]');
+    var guides = document.querySelectorAll('[data-guide]');
+    if (!tiles.length) return;
+
+    tiles.forEach(function (tile) {
+        tile.addEventListener('click', function () {
+            var name = tile.getAttribute('data-device');
+            // подсветка выбранной плитки
+            tiles.forEach(function (t) {
+                t.classList.toggle('device--active', t === tile);
+            });
+            // показать нужную инструкцию
+            guides.forEach(function (g) {
+                g.hidden = (g.getAttribute('data-guide') !== name);
+            });
+        });
+    });
+})();

@@ -220,32 +220,162 @@
                 <div class="cabinet__head">
                     <p class="cabinet__eyebrow">Подключение</p>
                     <h1 class="cabinet__title">Подключить за минуту</h1>
-                    <p class="cabinet__desc">Три шага — и ты онлайн. Приложение Happ, ключ из бота.</p>
+                    <p class="cabinet__desc">Выбери своё устройство — покажу пошаговую инструкцию.</p>
                 </div>
 
-                <div class="steps">
-                    <div class="step">
-                        <span class="step__num">1</span>
-                        <div class="step__body">
-                            <p class="step__title">Установи приложение Happ</p>
-                            <p class="step__desc">Бесплатное приложение для iPhone, Android, Windows и Mac. Скачай из магазина приложений своей платформы.</p>
+                <!-- выбор устройства -->
+                <div class="devices">
+                    <button class="device device--active" data-device="ios">
+                        <span class="device__ic"><svg viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 0-4 4v0"/><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="10" y1="18" x2="14" y2="18"/></svg></span>
+                        <span class="device__name">iPhone / iPad</span>
+                    </button>
+                    <button class="device" data-device="android">
+                        <span class="device__ic"><svg viewBox="0 0 24 24"><rect x="6" y="4" width="12" height="16" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg></span>
+                        <span class="device__name">Android</span>
+                    </button>
+                    <button class="device" data-device="windows">
+                        <span class="device__ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><line x1="8" y1="20" x2="16" y2="20"/><line x1="12" y1="16" x2="12" y2="20"/></svg></span>
+                        <span class="device__name">Windows</span>
+                    </button>
+                    <button class="device" data-device="mac">
+                        <span class="device__ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="1"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+                        <span class="device__name">Mac</span>
+                    </button>
+                </div>
+
+                <!-- инструкция: iOS -->
+                <div class="guide" data-guide="ios">
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step__num">1</span>
+                            <div class="step__body">
+                                <p class="step__title">Установи Happ из App Store</p>
+                                <p class="step__desc">Если App Store не находит приложение или пишет «недоступно в регионе» — смени регион Apple ID на Казахстан.</p>
+                                <a class="btn btn--key" href="https://apps.apple.com/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Скачать Happ (App Store)</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">2</span>
+                            <div class="step__body">
+                                <p class="step__title">Получи ключ в боте</p>
+                                <p class="step__desc">Забери бесплатный ключ или оформи тариф. Скопируй ссылку-подписку.</p>
+                                <a class="btn btn--key" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Открыть бота</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">3</span>
+                            <div class="step__body">
+                                <p class="step__title">Вставь ключ и подключись</p>
+                                <p class="step__desc">В Happ нажми «+» → «Вставить из буфера». Разреши добавить VPN-профиль. Выбери сервер и нажми подключение.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="step">
-                        <span class="step__num">2</span>
-                        <div class="step__body">
-                            <p class="step__title">Получи ключ в боте</p>
-                            <p class="step__desc">Открой бота, забери бесплатный ключ или оформи тариф. Скопируй ссылку-подписку.</p>
-                            <a class="btn btn--key" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener" style="max-width:220px;margin-top:12px">Открыть бота</a>
+                </div>
+
+                <!-- инструкция: Android -->
+                <div class="guide" data-guide="android" hidden>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step__num">1</span>
+                            <div class="step__body">
+                                <p class="step__title">Установи Happ из Google Play</p>
+                                <a class="btn btn--key" href="https://play.google.com/store/apps/details?id=com.happproxy" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Скачать Happ (Google Play)</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">2</span>
+                            <div class="step__body">
+                                <p class="step__title">Получи ключ в боте</p>
+                                <p class="step__desc">Забери бесплатный ключ или оформи тариф. Скопируй ссылку-подписку.</p>
+                                <a class="btn btn--key" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Открыть бота</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">3</span>
+                            <div class="step__body">
+                                <p class="step__title">Вставь ключ и подключись</p>
+                                <p class="step__desc">В Happ нажми «+» → «Вставить из буфера». Разреши запрос на VPN. Выбери сервер и включи подключение.</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="step">
-                        <span class="step__num">3</span>
-                        <div class="step__body">
-                            <p class="step__title">Вставь ключ и подключись</p>
-                            <p class="step__desc">В Happ нажми «+» → «Вставить из буфера». Приложение подтянет серверы. Нажми кнопку подключения — готово!</p>
+                </div>
+
+                <!-- инструкция: Windows -->
+                <div class="guide" data-guide="windows" hidden>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step__num">1</span>
+                            <div class="step__body">
+                                <p class="step__title">Скачай Happ для Windows</p>
+                                <p class="step__desc">На открывшейся странице найди файл, который заканчивается на .exe, и скачай его.</p>
+                                <a class="btn btn--key" href="https://github.com/Happ-proxy/happ-desktop/releases/latest" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Скачать Happ (Windows)</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">2</span>
+                            <div class="step__body">
+                                <p class="step__title">Установи и запусти</p>
+                                <p class="step__desc">Открой скачанный файл, установи приложение и запусти его.</p>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">3</span>
+                            <div class="step__body">
+                                <p class="step__title">Вставь ключ и подключись</p>
+                                <p class="step__desc">Скопируй ключ в боте, в Happ нажми «+» → «Вставить из буфера обмена», затем кнопку подключения.</p>
+                                <a class="btn btn--key" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Открыть бота</a>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- инструкция: Mac -->
+                <div class="guide" data-guide="mac" hidden>
+                    <div class="steps">
+                        <div class="step">
+                            <span class="step__num">1</span>
+                            <div class="step__body">
+                                <p class="step__title">Установи Happ из App Store</p>
+                                <p class="step__desc">Если приложение недоступно в регионе — смени регион Apple ID на Казахстан.</p>
+                                <a class="btn btn--key" href="https://apps.apple.com/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Скачать Happ (App Store)</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">2</span>
+                            <div class="step__body">
+                                <p class="step__title">Получи ключ в боте</p>
+                                <p class="step__desc">Забери бесплатный ключ или оформи тариф. Скопируй ссылку-подписку.</p>
+                                <a class="btn btn--key" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener" style="max-width:240px;margin-top:12px">Открыть бота</a>
+                            </div>
+                        </div>
+                        <div class="step">
+                            <span class="step__num">3</span>
+                            <div class="step__body">
+                                <p class="step__title">Вставь ключ и подключись</p>
+                                <p class="step__desc">В Happ нажми «+» → «Вставить из буфера», разреши добавить VPN-конфигурацию, выбери сервер и подключись.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- помощь -->
+                <div class="help">
+                    <a class="help__item" href="https://t.me/TutoVPN" target="_blank" rel="noopener">
+                        <span class="help__ic"><svg viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg></span>
+                        <span class="help__text">
+                            <b>Новостной канал</b>
+                            <span>Новости, советы и акции</span>
+                        </span>
+                        <span class="btn__arrow">›</span>
+                    </a>
+                    <a class="help__item" href="https://t.me/exruxe" target="_blank" rel="noopener">
+                        <span class="help__ic"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                        <span class="help__text">
+                            <b>Поддержка</b>
+                            <span>Не получилось — напиши нам</span>
+                        </span>
+                        <span class="btn__arrow">›</span>
+                    </a>
                 </div>
             </div>
 
@@ -306,8 +436,11 @@
         <div class="container">
             <p class="footer__brand">TutoVPN · быстрый VPN в Telegram</p>
             <p class="footer__links">
-                <a class="footer__link" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener">@Tuto_VPN_bot</a>
-                · Канал · Поддержка
+                <a class="footer__link" href="https://t.me/Tuto_VPN_bot" target="_blank" rel="noopener">Бот</a>
+                ·
+                <a class="footer__link" href="https://t.me/TutoVPN" target="_blank" rel="noopener">Канал</a>
+                ·
+                <a class="footer__link" href="https://t.me/exruxe" target="_blank" rel="noopener">Поддержка</a>
             </p>
         </div>
     </footer>
